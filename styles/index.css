@@ -1,0 +1,182 @@
+:root {
+    --color-primary-dark: #73810F;
+    /* Koyu Yeşil */
+    --color-light-gray: #C1C0A4;
+    /* Açık Gri/Bej */
+    --color-accent-red: #631C14;
+    /* Koyu Kırmızı/Bordo */
+    --color-secondary-green: #B8BC7F;
+    /* Orta Yeşil */
+    --color-darkest: #181A00;
+    /* Çok Koyu */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-light-gray);
+    /* Açık Gri/Bej arka plan */
+    color: var(--color-darkest);
+    /* Koyu metin */
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Manrope', sans-serif;
+}
+
+.default-header {
+    background-color: var(--color-primary-dark);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 24px;
+    padding-right: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+
+}
+
+.header-logo {
+    max-height: 70px;
+    width: auto;
+}
+
+.header-nav-item,
+.header-menu-nav-item{
+    color: white;
+    font-size: 1.2rem;
+}
+
+.header-nav-item a:hover,
+.header-menu-nav-item a:hover {
+}
+
+.burger-inner div {
+    background-color: var(--color-darkest);
+    transition: all 0.3s ease-in-out;
+}
+
+.burger.is-active .top-bun {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.burger.is-active .patty {
+    opacity: 0;
+}
+
+.burger.is-active .bottom-bun {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.hero-section {
+    min-height: 50vh;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 4rem 1rem;
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/img/hero-bg.jpg');
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-align: left;
+    /* Metni sola hizala */
+}
+
+.hero-content a {
+    text-decoration: underline;
+    /* Altına çizgi ekle */
+}
+
+.section-divider-svg-clip {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 6vw;
+    overflow: hidden;
+    background-color: var(--color-light-gray);
+    /* Bölücü rengi */
+}
+
+.section-divider-clip path {
+    fill: currentColor;
+}
+
+.rounded-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleY(-1);
+    transform-origin: bottom;
+    color: var(--color-light-gray);
+    /* Bölücünün arka plan rengiyle aynı olsun */
+}
+
+.content-section {
+    padding: 4rem 1rem;
+}
+
+.footer-section {
+    background-color: var(--color-darkest);
+    color: var(--color-light-gray);
+    padding: 4rem 1rem;
+}
+
+.footer-logo {
+    max-width: 100px;
+    height: auto;
+}
+
+/* Mobil menü için */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu-overlay.is-active {
+    transform: translateX(0);
+}
+
+.mobile-menu-overlay nav a {
+    color: white;
+    font-size: 1.8rem;
+    margin: 1rem 0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.mobile-menu-overlay nav a:hover {
+    color: var(--color-accent-red);
+}
