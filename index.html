@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack&Go | Sandwiches</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Manrope ve Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://assets.squarespace.com/universal/default-favicon.ico">
+    <!-- Özel CSS -->
+    <style>
+        :root {
+            --color-primary-dark: #73810F; /* Koyu Yeşil */
+            --color-light-gray: #C1C0A4; /* Açık Gri/Bej */
+            --color-accent-red: #631C14; /* Koyu Kırmızı/Bordo */
+            --color-secondary-green: #B8BC7F; /* Orta Yeşil */
+            --color-darkest: #181A00; /* Çok Koyu */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-light-gray); /* Açık Gri/Bej arka plan */
+            color: var(--color-darkest); /* Koyu metin */
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Manrope', sans-serif;
+            color: var(--color-darkest);
+        }
+        .header-nav-item a, .header-menu-nav-item a {
+            transition: color 0.3s ease;
+        }
+        .header-nav-item a:hover, .header-menu-nav-item a:hover {
+            color: var(--color-accent-red);
+        }
+        .burger-inner div {
+            background-color: var(--color-darkest);
+            transition: all 0.3s ease-in-out;
+        }
+        .burger.is-active .top-bun {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .burger.is-active .patty {
+            opacity: 0;
+        }
+        .burger.is-active .bottom-bun {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+        .hero-section {
+            min-height: 50vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: left; /* Metni sola hizala */
+        }
+        .hero-content a {
+            text-decoration: underline; /* Altına çizgi ekle */
+        }
+        .section-divider-svg-clip {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 6vw;
+            overflow: hidden;
+            background-color: var(--color-light-gray); /* Bölücü rengi */
+        }
+        .section-divider-clip path {
+            fill: currentColor;
+        }
+        .rounded-divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: scaleY(-1);
+            transform-origin: bottom;
+            color: var(--color-light-gray); /* Bölücünün arka plan rengiyle aynı olsun */
+        }
+        .content-section {
+            padding: 4rem 1rem;
+        }
+        .footer-section {
+            background-color: var(--color-darkest);
+            color: var(--color-light-gray);
+            padding: 4rem 1rem;
+        }
+        .footer-logo {
+            max-width: 100px;
+            height: auto;
+        }
+        /* Mobil menü için */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-menu-overlay.is-active {
+            transform: translateX(0);
+        }
+        .mobile-menu-overlay nav a {
+            color: white;
+            font-size: 1.8rem;
+            margin: 1rem 0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .mobile-menu-overlay nav a:hover {
+            color: var(--color-accent-red);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <div id="siteWrapper" class="min-h-screen flex flex-col">
+
+        <!-- Header -->
+        <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center sticky top-0 z-50">
+            <div class="flex items-center">
+                <!-- Logo -->
+                <a href="/index.html" class="flex-shrink-0">
+                    <picture>
+                        <source media="(max-width: 799px)" srcset="/img/logo-icon.png">
+                        <source media="(min-width: 800px)" srcset="/img/logo-full.png">
+                        <img src="/img/logo-full.png" alt="Stack&Go | Sandwiches" class="h-10 md:h-12 rounded-md">
+                    </picture>
+                </a>
+            </div>
+
+            <!-- Masaüstü Navigasyon -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="/pages/about.html" class="text-lg font-medium text-gray-700 hover:text-orange-500 transition-colors duration-300">Hikayemiz</a>
+                <a href="/pages/menu.html" class="text-lg font-medium text-gray-700 hover:text-orange-500 transition-colors duration-300">Menü</a>
+                <a href="/pages/photos.html" class="text-lg font-medium text-gray-700 hover:text-orange-500 transition-colors duration-300">Fotoğraflar</a>
+            </nav>
+
+            <!-- Mobil Burger Menü Butonu -->
+            <div class="md:hidden">
+                <button id="burger-menu-btn" class="burger flex flex-col justify-around w-8 h-6 bg-transparent border-none cursor-pointer p-0 z-50">
+                    <div class="top-bun w-full h-0.5 bg-gray-800 rounded-full"></div>
+                    <div class="patty w-full h-0.5 bg-gray-800 rounded-full"></div>
+                    <div class="bottom-bun w-full h-0.5 bg-gray-800 rounded-full"></div>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobil Menü Overlay -->
+        <div id="mobile-menu-overlay" class="mobile-menu-overlay">
+            <nav class="flex flex-col items-center">
+                <a href="/pages/about.html" class="text-white text-3xl font-bold mb-6">Hikayemiz</a>
+                <a href="/pages/menu.html" class="text-white text-3xl font-bold mb-6">Menü</a>
+                <a href="/pages/photos.html" class="text-white text-3xl font-bold">Fotoğraflar</a>
+            </nav>
+        </div>
+
+        <main id="page" class="flex-grow">
+
+            <!-- Hero Section -->
+            <section class="hero-section bg-cover bg-center text-white relative" style="background-image: url('/img/camp_075-copy.jpg');">
+                <div class="hero-content relative z-20 p-4">
+                    <h1 class="text-4xl md:text-6xl font-extrabold mb-4">
+                        <a href="/pages/about.html" class="text-white hover:text-orange-300 transition-colors duration-300">Hikayemiz</a>
+                    </h1>
+                    <h1 class="text-4xl md:text-6xl font-extrabold mb-4">
+                        <a href="/pages/menu.html" class="text-white hover:text-orange-300 transition-colors duration-300">Menü</a>
+                    </h1>
+                    <h1 class="text-4xl md:text-6xl font-extrabold">
+                        <a href="/pages/photos.html" class="text-white hover:text-orange-300 transition-colors duration-300">Fotoğraflar</a>
+                    </h1>
+                </div>
+            </section>
+
+            <!-- Section Divider (Rounded) -->
+            <div class="section-divider-svg-clip relative" style="background-color: var(--color-light-gray);">
+                <svg class="rounded-divider absolute bottom-0 left-0 w-full h-full" viewBox="0 0 1 1" preserveAspectRatio="none">
+                    <path class="section-divider-clip" d="M-1, 0.891 L-1, 0.891 l0,0 c0,0 0.25,0.109 0.5,0.109 s0.5,-0.109 0.5,-0.109 l0,0l0,0 c0,0 0.25,0.109 0.5,0.109 s0.5,-0.109 0.5,-0.109 l0,0l0,0 c0,0 0.25,0.109 0.5,0.109 s0.5,-0.109 0.5,-0.109 l0,0 L1, -1 L0, -1 z"></path>
+                </svg>
+            </div>
+
+            <!-- About Section -->
+            <section class="content-section py-16 px-4 md:px-8" style="background-color: var(--color-light-gray);">
+                <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-1/2 flex justify-center">
+                        <img src="/img/image-asset.jpeg" alt="Sandwich Making" class="w-full h-auto max-w-md rounded-lg shadow-lg">
+                    </div>
+                    <div class="md:w-1/2 text-center md:text-left">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--color-primary-dark);">Yepyeni bir lezzet durağı olarak doğduk: <strong style="color: var(--color-accent-red);">Stack&Go Sandwiches</strong></h2>
+                        <p class="text-lg md:text-xl leading-relaxed mb-6" style="color: var(--color-darkest);">Amacımız belliydi; yoğun yolculuklarınızın ortasında, ya da sadece günlük koşuşturmacanızda size <strong>taptaze, dilediğiniz gibi hazırlanmış sandviçlerle</strong> keyifli bir mola sunmak.</p>
+                        <!-- <a href="/pages/about.html" class="inline-block text-white font-semibold py-3 px-6 rounded-md shadow-md" style="background-color: var(--color-accent-red); hover:background-color: var(--color-primary-dark); transition: background-color 0.3s ease;">Hikayemizi Öğrenin.</a> -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Location and Hours Section -->
+            <section class="content-section py-16 px-4 md:px-8" style="background-color: var(--color-secondary-green);">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--color-darkest);">Cumhuriyet Mahallesi, Muğla Bodrum Yolu No:21 5, Milas/Muğla</h2>
+                    <!-- <a href="https://maps.app.goo.gl/yPBLmTPTuryqmuk9A" target="_blank" class="inline-block text-white font-semibold py-3 px-8 rounded-md shadow-md" style="background-color: var(--color-primary-dark); hover:background-color: var(--color-accent-red); transition: background-color 0.3s ease;"> -->
+                        Yol Tarifi Al
+                    </a>
+                    <div class="flex flex-col md:flex-row justify-center gap-8 mt-8">
+                        <div class="p-6 rounded-lg shadow-md w-full md:w-1/3" style="background-color: var(--color-light-gray);">
+                            <h3 class="text-2xl font-bold mb-2" style="color: var(--color-darkest);">Pazartesi-Cuma<br>10:00-22:00</h3>
+                        </div>
+                        <div class="p-6 rounded-lg shadow-md w-full md:w-1/3" style="background-color: var(--color-light-gray);">
+                            <h3 class="text-2xl font-bold mb-2" style="color: var(--color-darkest);">Cumartesi, Pazar<br>10:00-18:00</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer-section py-12 px-6">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div class="flex flex-col items-center md:items-start">
+                    <img src="/img/logo-icon.png" alt="Stack&Go Logo" class="footer-logo mb-4 rounded-md">
+                    <h4 class="text-xl font-semibold">Stack&Go | Sandwiches</h4>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Adres</h4>
+                    <p class="leading-relaxed">Cumhuriyet Mahallesi, Muğla Bodrum Yolu No:21 5, Milas/Muğla</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">İletişim</h4>
+                    <p>info@stackandgosandwiches.com</p>
+                    <p>(555) 555-5555</p>
+                </div>
+            </div>
+            <div class="text-center text-sm mt-8">
+                <p>&copy; 2024 Stack&Go Sandwiches. Tüm Hakları Saklıdır.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const burgerBtn = document.getElementById('burger-menu-btn');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+            burgerBtn.addEventListener('click', () => {
+                mobileMenuOverlay.classList.toggle('is-active');
+                burgerBtn.classList.toggle('is-active');
+                document.body.classList.toggle('overflow-hidden');
+            });
+
+            mobileMenuOverlay.querySelectorAll('a').forEach(item => {
+                item.addEventListener('click', () => {
+                    mobileMenuOverlay.classList.remove('is-active');
+                    burgerBtn.classList.remove('is-active');
+                    document.body.classList.remove('overflow-hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
