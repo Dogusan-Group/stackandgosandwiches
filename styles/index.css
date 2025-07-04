@@ -36,9 +36,12 @@ h4 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
+    position: absolute;
     top: 0;
-    z-index: 50;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 5000;
 
 }
 
@@ -48,14 +51,13 @@ h4 {
 }
 
 .header-nav-item,
-.header-menu-nav-item{
+.header-menu-nav-item {
     color: white;
     font-size: 1.2rem;
 }
 
 .header-nav-item a:hover,
-.header-menu-nav-item a:hover {
-}
+.header-menu-nav-item a:hover {}
 
 .burger-inner div {
     background-color: var(--color-darkest);
@@ -99,42 +101,19 @@ h4 {
     z-index: 2;
     color: white;
     text-align: left;
-    /* Metni sola hizala */
 }
 
 .hero-content a {
     text-decoration: underline;
-    /* Altına çizgi ekle */
 }
 
-.section-divider-svg-clip {
-    display: block;
-    position: relative;
-    width: 100%;
-    height: 6vw;
-    overflow: hidden;
+.content-section {}
+
+.content-section a {
+    text-decoration: none;
+    color: var(--color-darkest);
     background-color: var(--color-light-gray);
-    /* Bölücü rengi */
-}
-
-.section-divider-clip path {
-    fill: currentColor;
-}
-
-.rounded-divider {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform: scaleY(-1);
-    transform-origin: bottom;
-    color: var(--color-light-gray);
-    /* Bölücünün arka plan rengiyle aynı olsun */
-}
-
-.content-section {
-    padding: 4rem 1rem;
+    padding: 1rem 2rem;
 }
 
 .footer-section {
@@ -144,8 +123,15 @@ h4 {
 }
 
 .footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-logo-icon {
     max-width: 100px;
     height: auto;
+    padding: 0.5rem;
 }
 
 /* Mobil menü için */
@@ -179,4 +165,13 @@ h4 {
 
 .mobile-menu-overlay nav a:hover {
     color: var(--color-accent-red);
+}
+
+
+@media screen and (max-width: 1050px) {
+
+    .siteWrapper {
+        max-width: 1050px;
+        margin: auto;
+    }
 }

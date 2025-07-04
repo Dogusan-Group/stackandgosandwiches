@@ -19,7 +19,7 @@
 
         <!-- Header -->
         <header class="default-header">
-            <div class="flex items-center">
+            <div class="flex items-center" style="max-width: 1050px;">
                 <!-- Logo -->
                 <a href="/index.html" class="flex-shrink-0">
                     <picture>
@@ -56,10 +56,10 @@
             </nav>
         </div>
 
-        <main id="page" class="flex-grow">
+        <main id="page" class="flex-grow" style="padding-top: 80px;">
 
             <!-- Hero Section -->
-            <section class="hero-section bg-cover bg-center text-white" style="background-image: url('/img/camp_075-copy.jpg');">
+            <section class="hero-section">
                 <div class="hero-content z-20 p-4">
                     <h1 class="text-4xl md:text-6xl font-extrabold mb-4">
                         <a href="/pages/about.html" class="text-white hover:text-orange-300 transition-colors duration-300">Hikayemiz</a>
@@ -73,16 +73,9 @@
                 </div>
             </section>
 
-            <!-- Section Divider (Rounded) -->
-            <div class="section-divider-svg-clip relative" style="background-color: var(--color-light-gray);">
-                <svg class="rounded-divider absolute bottom-0 left-0 w-full h-full" viewBox="0 0 1 1" preserveAspectRatio="none">
-                    <path class="section-divider-clip" d="M-1, 0.891 L-1, 0.891 l0,0 c0,0 0.25,0.109 0.5,0.109 s0.5,-0.109 0.5,-0.109 l0,0l0,0 c0,0 0.25,0.109 0.5,0.109 s0.5,-0.109 0.5,-0.109 l0,0l0,0 c0,0 0.25,0.109 0.5,0.109 s0.5,-0.109 0.5,-0.109 l0,0 L1, -1 L0, -1 z"></path>
-                </svg>
-            </div>
-
             <!-- About Section -->
             <section class="content-section py-16 px-4 md:px-8" style="background-color: var(--color-light-gray);">
-                <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
+                <div class="flex flex-col md:flex-row items-center gap-8">
                     <div class="md:w-1/2 flex justify-center">
                         <img src="/img/home-content-img.jpg" alt="Sandwich Making" class="w-full h-auto max-w-md rounded-lg shadow-lg">
                     </div>
@@ -96,12 +89,12 @@
 
             <!-- Location and Hours Section -->
             <section class="content-section py-16 px-4 md:px-8" style="background-color: var(--color-accent-red);">
-                <div class="max-w-4xl mx-auto text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--color-light-gray);">Cumhuriyet Mahallesi, Muğla Bodrum Yolu No:21/5, Milas/Muğla</h2>
-                    <a href="https://maps.app.goo.gl/yPBLmTPTuryqmuk9A" target="_blank" style="color: var(--color-light-gray);">
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-10" style="color: var(--color-light-gray);">Cumhuriyet Mahallesi, Muğla Bodrum Yolu No:21/5, Milas/Muğla</h2>
+                    <a href="https://maps.app.goo.gl/yPBLmTPTuryqmuk9A" target="_blank">
                         Yol Tarifi Al
                     </a>
-                    <div class="flex flex-col md:flex-row justify-center gap-8 mt-8">
+                    <div class="flex md:flex-row justify-center gap-8 mt-10">
                         <div class="">
                             <h3 class="text-2xl font-bold mb-2" style="color: var(--color-light-gray);">Pazartesi-Cuma<br>10:00-22:00</h3>
                         </div>
@@ -116,9 +109,9 @@
 
         <!-- Footer -->
         <footer class="footer-section py-12 px-6">
-            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-                <div class="flex flex-col items-center md:items-start">
-                    <img src="/img/logo-icon.png" alt="Stack&Go Logo" class="footer-logo mb-4 rounded-md">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div class="footer-logo">
+                    <img src="/img/logo-icon.png" alt="Stack&Go Logo" class="footer-logo-icon">
                     <h4 class="text-xl font-semibold">Stack&Go | Sandwiches</h4>
                 </div>
                 <div>
@@ -128,11 +121,9 @@
                 <div>
                     <h4 class="text-xl font-semibold mb-4">İletişim</h4>
                     <p>info@stackandgosandwiches.com</p>
-                    <p>(555) 555-5555</p>
+                    <p>İşletme müdürü | Hüseyin Sevim</p>
+                    <p>+90 (545) 722 3333</p>
                 </div>
-            </div>
-            <div class="text-center text-sm mt-8">
-                <p>&copy; 2025 Stack&Go Sandwiches. Tüm Hakları Saklıdır.</p>
             </div>
         </footer>
 
