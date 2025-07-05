@@ -1,12 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Stack&Go | Hikayemiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&family=Poppins:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../img/logo-icon.png">
+    <link rel="stylesheet" href="../styles/index.css">
 </head>
-<body>
-    <h1>Hakkımızda</h1>
-    <p>Bu sayfa, web sitemizin amacını ve misyonunu tanıtmaktadır. Burada, şirketimizin tarihçesi, değerleri ve hedefleri hakkında bilgi bulabilirsiniz. Ayrıca, ekibimiz ve sunduğumuz hizmetler hakkında da detaylı bilgi verilmektedir.</p>
+
+<body class="font-sans antialiased">
+    <div id="siteWrapper" class="min-h-screen flex flex-col">
+
+        <header class="default-header">
+            <div class="flex items-center">
+                <a href="/index.html" class="flex-shrink-0">
+                    <picture>
+                        <source media="(max-width: 799px)" srcset="../img/logo-icon.png">
+                        <source media="(min-width: 800px)" srcset="../img/logo-full.png">
+                        <img src="../img/logo-full.png" alt="Stack&Go | Sandwiches" class="header-logo">
+                    </picture>
+                </a>
+            </div>
+
+            <nav class="hidden md:flex space-x-8">
+                <a href="/pages/about.html" class="header-nav-item">Hikayemiz</a>
+                <a href="/pages/menu.html" class="header-nav-item">Menü</a>
+                <a href="/pages/photos.html" class="header-nav-item">Fotoğraflar</a>
+            </nav>
+
+            <div class="md:hidden">
+                <button id="burger-menu-btn"
+                    class="burger flex flex-col justify-around w-8 h-6 bg-transparent border-none cursor-pointer p-0 z-50">
+                    <div class="top-bun w-full h-0.5 bg-gray-800 rounded-full"></div>
+                    <div class="patty w-full h-0.5 bg-gray-800 rounded-full"></div>
+                    <div class="bottom-bun w-full h-0.5 bg-gray-800 rounded-full"></div>
+                </button>
+            </div>
+        </header>
+
+        <div id="mobile-menu-overlay" class="mobile-menu-overlay">
+            <nav class="flex flex-col items-center">
+                <a href="/pages/about.html" class="text-white text-3xl font-bold mb-6">Hikayemiz</a>
+                <a href="/pages/menu.html" class="text-white text-3xl font-bold mb-6">Menü</a>
+                <a href="/pages/photos.html" class="text-white text-3xl font-bold">Fotoğraflar</a>
+            </nav>
+        </div>
+
+        <main id="page" class="flex-grow" style="padding-top: 80px;">
+
+            <section class="content-section py-16 px-4 md:px-8" style="background-color: var(--color-light-gray);">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-8" style="color: var(--color-primary-dark);">Hikayemiz</h2>
+                    <p class="text-lg md:text-xl leading-relaxed mb-6" style="color: var(--color-darkest);">
+                        Muğla-Bodrum yolu üzerinde, Milas'ın kalbinde yepyeni bir lezzet durağı olarak doğduk: <strong
+                            style="color: var(--color-accent-red);">Stack&Go Sandwiches</strong>. Amacımız belliydi; yoğun
+                        yolculuklarınızın ortasında, ya da sadece günlük koşuşturmacanızda size taptaze, dilediğiniz gibi
+                        hazırlanmış sandviçlerle keyifli bir mola sunmak.
+                    </p>
+                    <p class="text-lg md:text-xl leading-relaxed mb-6" style="color: var(--color-darkest);">
+                        Her sabah özenle seçilmiş malzemelerimizle, modern ve tertemiz mutfağımızda, içten bir gülümsemeyle
+                        güne başlıyoruz. Çünkü biliyoruz ki, bir sandviç sadece bir yemek değildir; iyi hissettiren, enerji
+                        veren ve en önemlisi sizin istediğiniz gibi olan bir deneyimdir.
+                    </p>
+                    <p class="text-lg md:text-xl leading-relaxed mb-6" style="color: var(--color-darkest);">
+                        Stack&Go'da hikayenin kahramanı sizsiniz. İster klasikleri tercih edin, ister kendi damak zevkinize
+                        göre özgürce kombinasyonlar yaratın. Biz sadece bu lezzetli yolculukta size eşlik eden, sıcak ve
+                        samimi bir köprü olmak istiyoruz.
+                    </p>
+                    <p class="text-lg md:text-xl leading-relaxed font-bold" style="color: var(--color-accent-red);">
+                        Yolunuz açık, lezzetiniz bol olsun!
+                    </p>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="footer-section py-12 px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div class="footer-logo">
+                    <img src="../img/logo-icon.png" alt="Stack&Go Logo" class="footer-logo-icon">
+                    <h4 class="text-xl font-semibold">Stack&Go | Sandwiches</h4>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Adres</h4>
+                    <p class="leading-relaxed">Cumhuriyet Mahallesi, Muğla Bodrum Yolu No:21 5, Milas/Muğla</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">İletişim</h4>
+                    <p>info@stackandgosandwiches.com</p>
+                    <p>İşletme müdürü | Hüseyin Sevim</p>
+                    <p>+90 (545) 722 3333</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const burgerBtn = document.getElementById('burger-menu-btn');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+            burgerBtn.addEventListener('click', () => {
+                mobileMenuOverlay.classList.toggle('is-active');
+                burgerBtn.classList.toggle('is-active');
+                document.body.classList.toggle('overflow-hidden');
+            });
+
+            mobileMenuOverlay.querySelectorAll('a').forEach(item => {
+                item.addEventListener('click', () => {
+                    mobileMenuOverlay.classList.remove('is-active');
+                    burgerBtn.classList.remove('is-active');
+                    document.body.classList.remove('overflow-hidden');
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>
