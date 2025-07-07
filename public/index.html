@@ -1,89 +1,168 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<html lang="tr">
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/11.10.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/11.10.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack&Go | Sandwiches</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Manrope ve Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&family=Poppins:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="img/logo-icon.png">
+    <link rel="stylesheet" href="styles/index.css">
+</head>
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+<body class="font-sans antialiased">
+    <div id="siteWrapper" class="min-h-screen flex flex-col">
+
+        <!-- Header -->
+        <header class="default-header">
+            <div class="flex items-center">
+                <!-- Logo -->
+                <a href="/index.html" class="flex-shrink-0">
+                    <picture>
+                        <source media="(max-width: 799px)" srcset="/img/logo-icon.png">
+                        <source media="(min-width: 800px)" srcset="/img/logo-full.png">
+                        <img src="/img/logo-full.png" alt="Stack&Go | Sandwiches" class="header-logo">
+                    </picture>
+                </a>
+            </div>
+
+            <!-- Masaüstü Navigasyon -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="/pages/about.html" class="header-nav-item">Hikayemiz</a>
+                <a href="/pages/menu.html" class="header-nav-item">Menü</a>
+                <a href="/pages/photos.html" class="header-nav-item">Fotoğraflar</a>
+            </nav>
+
+            <!-- Mobil Burger Menü Butonu -->
+            <div class="md:hidden">
+                <button id="burger-menu-btn"
+                    class="burger flex flex-col justify-around w-8 h-6 bg-transparent border-none cursor-pointer p-0 z-50">
+                    <div class="top-bun w-full h-0.5 bg-gray-800 rounded-full"></div>
+                    <div class="patty w-full h-0.5 bg-gray-800 rounded-full"></div>
+                    <div class="bottom-bun w-full h-0.5 bg-gray-800 rounded-full"></div>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobil Menü Overlay -->
+        <div id="mobile-menu-overlay" class="mobile-menu-overlay">
+            <nav class="flex flex-col items-center">
+                <a href="/pages/about.html" class="text-white text-3xl font-bold mb-6">Hikayemiz</a>
+                <a href="/pages/menu.html" class="text-white text-3xl font-bold mb-6">Menü</a>
+                <a href="/pages/photos.html" class="text-white text-3xl font-bold">Fotoğraflar</a>
+            </nav>
+        </div>
+
+        <main id="page" class="flex-grow" style="padding-top: 80px;">
+
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1>
+                        <a href="/pages/about.html">Hikayemiz</a>
+                    </h1>
+                    <h1>
+                        <a href="/pages/menu.html">Menü</a>
+                    </h1>
+                    <h1>
+                        <a href="/pages/photos.html">Fotoğraflar</a>
+                    </h1>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="content-section py-16 px-4 md:px-8" style="background-color: var(--color-light-gray);">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-1/2 flex justify-center">
+                        <img src="/img/home-content-img.jpg" alt="Sandwich Making"
+                            class="w-full h-auto max-w-md rounded-lg shadow-lg">
+                    </div>
+                    <div class="md:w-1/2 text-center md:text-left">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--color-primary-dark);">
+                            Yepyeni bir lezzet durağı olarak doğduk: <strong
+                                style="color: var(--color-accent-red);">Stack&Go Sandwiches</strong></h2>
+                        <p class="text-lg md:text-xl leading-relaxed mb-6" style="color: var(--color-darkest);">Amacımız
+                            belliydi; yoğun yolculuklarınızın ortasında, ya da sadece günlük koşuşturmacanızda size
+                            <strong>taptaze, dilediğiniz gibi hazırlanmış sandviçlerle</strong> keyifli bir mola sunmak.
+                        </p>
+                        <!-- <a href="/pages/about.html" class="inline-block text-white font-semibold py-3 px-6 rounded-md shadow-md" style="background-color: var(--color-accent-red); hover:background-color: var(--color-primary-dark); transition: background-color 0.3s ease;">Hikayemizi Öğrenin.</a> -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Location and Hours Section -->
+            <section class="content-section py-16 px-4 md:px-8" style="background-color: var(--color-accent-red);">
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-10" style="color: var(--color-light-gray);">Cumhuriyet
+                        Mahallesi, Muğla Bodrum Yolu No:21/5, Milas/Muğla</h2>
+                    <a href="https://maps.app.goo.gl/yPBLmTPTuryqmuk9A" target="_blank">
+                        Yol Tarifi Al
+                    </a>
+                    <div class="flex md:flex-row justify-center gap-8 mt-10">
+                        <div class="">
+                            <h3 class="text-2xl font-bold mb-2" style="color: var(--color-light-gray);">
+                                Pazartesi-Cuma<br>10:00-22:00</h3>
+                        </div>
+                        <div class="">
+                            <h3 class="text-2xl font-bold mb-2" style="color: var(--color-light-gray);">Cumartesi,
+                                Pazar<br>10:00-18:00</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer-section py-12 px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div class="footer-logo">
+                    <img src="/img/logo-icon.png" alt="Stack&Go Logo" class="footer-logo-icon">
+                    <h4 class="text-xl font-semibold">Stack&Go | Sandwiches</h4>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Adres</h4>
+                    <p class="leading-relaxed">Cumhuriyet Mahallesi, Muğla Bodrum Yolu No:21 5, Milas/Muğla</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">İletişim</h4>
+                    <p>info@stackandgosandwiches.com</p>
+                    <p>İşletme müdürü | Hüseyin Sevim</p>
+                    <p>+90 (545) 722 3333</p>
+                </div>
+            </div>
+        </footer>
+
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
 
+    <!-- JavaScript -->
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        document.addEventListener('DOMContentLoaded', () => {
+            const burgerBtn = document.getElementById('burger-menu-btn');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
+            burgerBtn.addEventListener('click', () => {
+                mobileMenuOverlay.classList.toggle('is-active');
+                burgerBtn.classList.toggle('is-active');
+                document.body.classList.toggle('overflow-hidden');
+            });
+
+            mobileMenuOverlay.querySelectorAll('a').forEach(item => {
+                item.addEventListener('click', () => {
+                    mobileMenuOverlay.classList.remove('is-active');
+                    burgerBtn.classList.remove('is-active');
+                    document.body.classList.remove('overflow-hidden');
+                });
+            });
+        });
     </script>
-  </body>
+</body>
+
 </html>
